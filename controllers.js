@@ -1,7 +1,19 @@
 var app = angular.module('controllers', []);
 
 app.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
-
+	$scope.songs = [];
+	$scope.searchSong = function () {
+		console.log('Searched for "' + $scope.song + '" song');
+		// var song = $scope.song.replace(/\s+/, '');
+		var apiUrl = "https://api.spotify.com/v1/search?type=track&q=" + $scope.song;
+		console.log(apiUrl);
+		$http.get(apiUrl)
+		.then(function (response) {
+			$scope.song = '';
+			$scope.songs = response;
+			console.log(response);
+		});
+	}
 
 	// $scope.photos = [];
 	// $scope.searchTag = function () {
@@ -14,19 +26,19 @@ app.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
 	// 	});
 	// };
 
-	$scope.savePhoto = function (photo) {
+	// $scope.savePhoto = function (photo) {
 
-		// localStorage
-		// if (!localStorage.photos) {
-		// 	localStorage.photos = JSON.stringify([]);
-		// }
+	// 	// localStorage
+	// 	// if (!localStorage.photos) {
+	// 	// 	localStorage.photos = JSON.stringify([]);
+	// 	// }
 
-		// var allPhotos = JSON.parse(localStorage.photos);
-		// allPhotos.push(photo);
+	// 	// var allPhotos = JSON.parse(localStorage.photos);
+	// 	// allPhotos.push(photo);
 
-		// localStorage.photos = JSON.stringify(allPhotos);
+	// 	// localStorage.photos = JSON.stringify(allPhotos);
 
-	};
+	// };
 }]);
 
 app.controller('PlaylistCtrl', ['$scope', function ($scope) {

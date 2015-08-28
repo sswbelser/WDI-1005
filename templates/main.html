@@ -3,14 +3,14 @@
 	<h3>Search for songs</h3>
 	<form class="form-inline" ng-submit="searchSong()">
 		<div class="form-group">
-			<input type="text" class="form-control" ng-model="tag" placeholder="Song Name">
+			<input type="text" class="form-control" ng-model="song" placeholder="Song Name">
 			<input type="submit" value="Search" class="btn btn-primary">
 		</div>
 	</form>
 	<hr>
 	<div class="row" ng-show="songs.length > 0">
 		<div class="col-md-3" ng-repeat="song in songs">
-		
+
 <!-- 			<div class="thumbnail">
 				<img ng-src="{{photo.images.standard_resolution.url}}" alt="Instagram Photo">
 				<br>
