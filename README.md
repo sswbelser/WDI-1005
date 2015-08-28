@@ -1,0 +1,1 @@
+Weekend project to create an Angular music search / playlist creation web app; using Spotify's API.
