@@ -1,4 +1,4 @@
-var app = angular.module('spotangular', ['controllers', 'ngRoute']);
+var app = angular.module('spotangular', ['controllers', 'ngRoute', 'mediaPlayer']);
 
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 	$routeProvider

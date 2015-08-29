@@ -9,19 +9,22 @@
 	</form>
 	<hr>
 	<div class="row" ng-show="songs.length > 0">
-		<div class="col-md-3" ng-repeat="song in songs">
-
-<!-- 			<div class="thumbnail">
-				<img ng-src="{{photo.images.standard_resolution.url}}" alt="Instagram Photo">
-				<br>
-				<p>@{{photo.user.username}}
-					<span class="pull-right">
+		<div class="col-md-6 col-md-offset-3" ng-repeat="song in songs">
+			<img ng-src="{{song.album.images[0].url}}" alt="Album photo">
+			<br>
+			<p>{{song.name}}</p>
+			<p>{{song.artists[0].name}}</p>
+			<p>{{song.album.name}}</p>
+			<a href="{{song.preview_url}}">Preview Song</a>
+			<audio controls>
+				<source ng-src="{{object.src | trusted}}"="{{song.preview_url}}" type="audio/mpeg">
+				<a href="{{song.preview_url}}">Song Preview</a>
+			</audio>
+					<!-- <span class="pull-right">
 						<span class="glyphicon glyphicon-heart"></span>	
 						<ng-pluralize count="{{photo.likes.count}}" when="{'one': '1 like', 'other': '{} likes'}"></ng-pluralize>
-					</span>
-				</p>
-				<p><a class="btn btn-success" href="javascript:void(0)" ng-click="savePhoto(photo)">Favorite</a></p>
-			</div> -->
+					</span> -->
+			<p><a class="btn btn-success" href="javascript:void(0)" ng-click="saveSong(song)">+Playlist</a></p>
 		</div>
 	</div>
 </div>
