@@ -5,28 +5,22 @@ app.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
 	$scope.searchSong = function () {
 		console.log('Searched for "' + $scope.song + '" song');
 		var apiUrl = "https://api.spotify.com/v1/search?type=track&q=" + $scope.song;
-		console.log(apiUrl);
 		$http.get(apiUrl)
 		.then(function (response) {
 			$scope.song = '';
 			$scope.songs = response.data.tracks.items;
-			console.log(response.data.tracks.items);
 		});
 	}
 
-	// $scope.saveSong = function (song) {
-
-	// 	// localStorage
-	// 	// if (!localStorage.songs) {
-	// 	// 	localStorage.songs = JSON.stringify([]);
-	// 	// }
-
-	// 	// var allSongs = JSON.parse(localStorage.songs);
-	// 	// allSongs.push(song);
-
-	// 	// localStorage.songs = JSON.stringify(allSongs);
-
-	// };
+	$scope.saveSong = function (song) {
+		console.log(song);
+		if (!localStorage.songs) {
+			localStorage.songs = JSON.stringify([]);
+		}
+		var allSongs = JSON.parse(localStorage.songs);
+		allSongs.push(song);
+		localStorage.songs = JSON.stringify(allSongs);
+	};
 }]);
 
 app.filter('trusted', ['$sce', function ($sce) {
@@ -36,6 +30,5 @@ app.filter('trusted', ['$sce', function ($sce) {
 }]);
 
 app.controller('PlaylistCtrl', ['$scope', function ($scope) {
-
-	// $scope.favorites = JSON.parse(localStorage.songs);
+	$scope.favorites = JSON.parse(localStorage.songs);
 }]);

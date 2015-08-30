@@ -1,18 +1,18 @@
 <div class="container">
-	<h1>My Playlist</h1>
-	<div class="row" ng-show="playlists.length > 0">
-		<div class="col-md-3" ng-repeat="playlist in playlists">
-		
-<!-- 			<div class="thumbnail">
-				<img ng-src="{{favorite.images.standard_resolution.url}}" alt="Instagram Photo">
-				<br>
-				<p>@{{favorite.user.username}}
-					<span class="pull-right">
-						<span class="glyphicon glyphicon-heart"></span>	
-						<ng-pluralize count="{{photo.likes.count}}" when="{'one': '1 like', 'other': '{} likes'}"></ng-pluralize>
-					</span>
-				</p>
-			</div> -->
+	<h3>My Playlist</h3>
+	<div class="row" ng-show="favorites.length > 0">
+		<div class="col-md-6 col-md-offset-3 text-center" ng-repeat="f in favorites">
+			<img ng-src="{{f.album.images[1].url}}" alt="Album photo">
+			<br>
+			<p>{{f.name}}</p>
+			<p>{{f.artists[0].name}}</p>
+			<p>{{f.album.name}}</p>
+			<a href="{{f.preview_url}}">Preview Song</a>
+			<br>
+			<audio controls>
+				<source ng-src="{{object.src | trusted}}"="{{f.preview_url}}" type="audio/mpeg" />
+				Your browser does not support the audio element
+			</audio>
 		</div>
 	</div>
 </div>
