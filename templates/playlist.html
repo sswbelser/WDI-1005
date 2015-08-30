@@ -1,18 +1,22 @@
 <div class="container">
-	<h3>My Playlist</h3>
-	<div class="row" ng-show="favorites.length > 0">
-		<div class="col-md-6 col-md-offset-3 text-center" ng-repeat="f in favorites">
-			<img ng-src="{{f.album.images[1].url}}" alt="Album photo">
-			<br>
-			<p>{{f.name}}</p>
-			<p>{{f.artists[0].name}}</p>
-			<p>{{f.album.name}}</p>
-			<a href="{{f.preview_url}}">Preview Song</a>
-			<br>
-			<audio controls>
-				<source ng-src="{{object.src | trusted}}"="{{f.preview_url}}" type="audio/mpeg" />
+	<div class="col-md-6 col-md-offset-3 text-center">
+		<h3>My Playlist</h3>
+		<hr>
+		<div class="row" ng-show="favorites.length > 0">
+			<div ng-repeat="f in favorites">
+				<img ng-src="{{f.album.images[1].url}}" alt="Album photo" class="album-photos">
+				<br>
+				<h3>{{f.name}}</h3>
+				<p>Artist: {{f.artists[0].name}}</p>
+				<p>Album: {{f.album.name}}</p>
+				<a href="{{f.preview_url}}" class="btn btn-warning">Preview Song</a>
+				<br><br>
+				<audio controls>
+					<source ng-src="{{object.src | trusted}}"="{{f.preview_url}}" type="audio/mpeg" />
 				Your browser does not support the audio element
-			</audio>
+				</audio>
+				<hr>
+			</div>
 		</div>
 	</div>
 </div>
