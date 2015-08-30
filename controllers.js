@@ -20,6 +20,7 @@ app.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
 		var allSongs = JSON.parse(localStorage.songs);
 		allSongs.push(song);
 		localStorage.songs = JSON.stringify(allSongs);
+		alert("Added to your favorites!");
 	};
 }]);
 

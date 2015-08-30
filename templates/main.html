@@ -1,6 +1,7 @@
 <div class="container">
-	<h1>Spotangular</h1>
-	<h3>Search for songs</h3>
+	<div class="col-md-6 col-md-offset-3 text-center">
+		<img src="./assets/images/logo.png" id="logo"><h1>Spotangular</h1>
+		<h3>Search for songs</h3>
 	<form class="form-inline" ng-submit="searchSong()">
 		<div class="form-group">
 			<input type="text" class="form-control" ng-model="song" placeholder="Song Name">
@@ -9,23 +10,24 @@
 	</form>
 	<hr>
 	<div class="row" ng-show="songs.length > 0">
-		<div class="col-md-6 col-md-offset-3 text-center" ng-repeat="song in songs">
-			<img ng-src="{{song.album.images[1].url}}" alt="Album photo">
+		<div class="col-md-6 col-md-offset-3 text-center" ng-repeat="s in songs">
+			<img ng-src="{{s.album.images[1].url}}" alt="Album photo">
 			<br>
-			<p>{{song.name}}</p>
-			<p>{{song.artists[0].name}}</p>
-			<p>{{song.album.name}}</p>
-			<a href="{{song.preview_url}}">Preview Song</a>
+			<p>{{s.name}}</p>
+			<p>{{s.artists[0].name}}</p>
+			<p>{{s.album.name}}</p>
+			<a href="{{s.preview_url}}">Preview Song</a>
 			<br>
 			<audio controls>
-				<source ng-src="{{object.src | trusted}}"="{{song.preview_url}}" type="audio/mpeg" />
+				<source ng-src="{{object.src | trusted}}"="{{s.preview_url}}" type="audio/mpeg" />
 				Your browser does not support the audio element
 			</audio>
 					<!-- <span class="pull-right">
 						<span class="glyphicon glyphicon-heart"></span>	
 						<ng-pluralize count="{{photo.likes.count}}" when="{'one': '1 like', 'other': '{} likes'}"></ng-pluralize>
 					</span> -->
-			<p><a class="btn btn-success" href="javascript:void(0)" ng-click="saveSong(song)">+Playlist</a></p>
+			<p><i class="fa fa-2x fa-heart"></i>  <a class="btn btn-success" href="javascript:void(0)" ng-click="saveSong(s)">+Favorite</a>  <i class="fa fa-2x fa-heart"></i></p>
+			<hr>
 		</div>
 	</div>
 </div>
